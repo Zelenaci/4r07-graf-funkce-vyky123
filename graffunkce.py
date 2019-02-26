@@ -80,7 +80,12 @@ def klikSbr(event):
     q = sbrVar.get()
     if q == "/ceska/k/souboru":
         smazPoleSbr()
-        
+
+def enter(event):
+    fceGraf() 
+
+def enterSbr(event):
+    sbrGraf()       
 
 
 ### funkce ###
@@ -108,6 +113,9 @@ tk.Button(main, text="Vytvoř graf", height=5, command=fceGraf).grid(column=3, r
 
 fceMinEntry.bind("<Button-1>", klik)
 fceMaxEntry.bind("<Button-1>", klik)
+fceMinEntry.bind("<Return>", enter)
+fceMaxEntry.bind("<Return>", enter)
+
 
 
 ###graf ze souboru###
@@ -120,6 +128,7 @@ sbrEntry.grid()
 tk.Button(sbrFrame, text="Vyber soubor", width=8, command=vyberSoubor).grid(column=0, sticky=tk.E)
 tk.Button(main, text="Vytvoř graf", height=5, command=sbrGraf).grid(column=3, row=1)
 sbrEntry.bind("<Button-1>", klikSbr)
+sbrEntry.bind("<Return>", enterSbr)
 
 ###popisky os###
 osyFrame=tk.LabelFrame(main, text="Popisky os")
