@@ -17,8 +17,8 @@ main.title("Grafy funkcí")
 
 def fceGraf():
     try:
-        od = float(fceMin.get())
-        do = float(fceMax.get())
+        od = float(fceMin.get().replace(",", "."))
+        do = float(fceMax.get().replace(",", "."))
         x = pl.linspace(od, do, 500)
         if fceVar.get() == 0:
             y = pl.sin(x)
@@ -32,8 +32,10 @@ def fceGraf():
         pl.xlabel(osaxVar.get())
         pl.ylabel(osayVar.get())
         pl.show()
-    except:
+    except ValueError:
         messagebox.showerror(title="Chybné meze", message="Zadejte meze osy\n jako reálná čísla!")
+    except:
+        messagebox.showerror(title="Neznámá chyba", message="Chyba! Zkontrolujte meze osy")
 
 def vyberSoubor():
     cesta = filedialog.askopenfilename(title="Vyberte soubor")
